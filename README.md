@@ -4,24 +4,62 @@
 
 ![Exiv2](http://www.exiv2.org/include/exiv2-logo-big.png)
 
-Welcome to Exiv2, a C++ library and a command line utility to read and
+Exiv2 is a C++ library and a command line utility to read and
 write Exif, IPTC and XMP image metadata. The homepage of Exiv2 is: https://github.com/Exiv2/exiv2
 
-## Source Code
+<name id="TOC"></a>
+----
+### T A B L E &nbsp;&nbsp;&nbsp; O&nbsp;&nbsp;F &nbsp;&nbsp;&nbsp; C O N T E N T S
 
-Download the source code [Source](http://exiv2.dyndns.org/0.27.0.1/bundles/exiv2-0.27.0.1-Source.tar.gz)
+1. [Welcome to Exiv2](#1)
+2. [Building and Installing Exiv2](#2)
+    1. [Build/Install Exiv2 on a UNIX-like system](#2-1)
+    2. [Build/Install Exiv2 with Visual Studio](#2-2)
+    3. [Uninstall Exiv2 on a UNIX-like system](#2-3)
+    4. [Dependencies](#2-4)
+    5. [Building Exiv2 Documentation](#2-5)
+3. [License and Support](#2)
+    1. [License](#3-1)
+    2. [Support](#3-2)
+4. [Platform Notes](#4)
+    1. [Linux](#4-1)
+    2. [MacOS-X](#4-2)
+    3. [Cygwin](#4-3)
+    4. [MinGW msys/2](#4-4)
+    5. [Microsoft Visual C++](#4-5)
+5. [Test Suit](#5)
+    1. [Running tests on a UNIX-like system](#5-1)
+    2. [Running tests on Visual Studio builds](#5-2)
 
 
-## Documentation
-Exiv2 API and tag reference documentation is at [Docs](http://exiv2.dyndns.org/0.27.0.1/doc/index.html)
+<name id="1"></a>
+----
+## Welcome to Exiv2
 
-## Building and Installing
+Downloads: [[Source](http://exiv2.dyndns.org/0.27.0.1/bundles/exiv2-0.27.0.1-Source.tar.gz)]
+[[Linux](http://exiv2.dyndns.org/0.27.0.1/bundles/exiv2-0.27.0.1-Linux.tar.gz)]
+[[MacOSX](http://exiv2.dyndns.org/0.27.0.1/bundles/exiv2-0.27.0.1-Darwin.tar.gz)]
+[[Cygwin](http://exiv2.dyndns.org/0.27.0.1/bundles/exiv2-0.27.0.1-CYGWIN.tar.gz)]
+[[MinGW](http://exiv2.dyndns.org/0.27.0.1/bundles/exiv2-0.27.0.1-MinGW.tar.gz)]
+[[MSVC](http://exiv2.dyndns.org/0.27.0.1/bundles/exiv2-0.27.0.1-msvc.zip)]
 
-Please read [README-CMAKE](http://exiv2.dyndns.org/0.27.0.1/README-CMAKE.md) for more information about how to build Exiv2.
+The file "ReadMe.txt" in a bundle describes how to install/link code with libraries for their respective platform.
+The file "license.txt" in a bundle describes is a copy of GPLv2 License
 
-### To install Exiv2 from a UNIX-like system, run:
+Documentation: [Docs](http://exiv2.dyndns.org/0.27.0.1/doc/index.html)
 
-    $ cd build
+<name id="2"></a>
+## 2 Building and Installing
+
+You will need CMake to build Exiv2:  https://cmake.org/download/
+
+Please read [README-CMAKE](README-CMAKE.md) for more detailed information about building Exiv2.
+
+<name id="2-1"></a>
+### 2.1 Build/Install Exiv2 on a UNIX-like system:
+
+    $ cd <exiv2dir> ; mkdir build ; cd build
+    $ cmake .. -G "Unix Makefiles" ; cmake --build . ; make test
     $ sudo make install
 
 ### The default install locations are:
@@ -32,11 +70,21 @@ Please read [README-CMAKE](http://exiv2.dyndns.org/0.27.0.1/README-CMAKE.md) for
 | /usr/local/bin | for the `exiv2` utility |
 | /usr/local/include/exiv2 | for header files |
 
-### To uninstall Exiv2 from a UNIX-like system, run:
+<name id="2-2"></a>
+### 2.2 Build/Install Exiv2 with Visual Studio
+
+We recommend that you use cocan with CMake to build  Exiv2 with Visual Studio.
+See [README-CONAN](http://exiv2.dyndns.org/0.27.0.1/README-CONAN.md) for more information
+
+<name id="2-3"></a>
+### 2.3 Uninstall Exiv2 on a UNIX-like system:
 
     $ sudo make uninstall
 
-## Dependencies
+[TOC](#TOC)
+
+<name id="2-4"></a>
+### 2.4 Dependencies
 
 You can choose to use dependent libraries using your platform's package installer.
 
@@ -57,47 +105,40 @@ package management system of the distribution together with the
 corresponding development packages (for the header files and static
 libraries).
 
-## Building Exiv2 Documentation
+[TOC](#TOC)
 
-To generate the documentation (`make doc`), you will further need:
-	`$ cmake ..options.. -DEXIV2_BUILD_DOC=On`
+<name id="2-5"></a>
+### 2.5 Building Exiv2 Documentation
+
+To generate the documentation (`make doc`):
+
+	$ cmake ..options.. -DEXIV2_BUILD_DOC=On
+	$ make doc
 
 To build the documentation, you will need the following products:
 
-| Product                    | Availability |
-|:-------------------------- |:----------- |
-| doxygen        |     http://www.doxygen.org/ |
-|	graphviz     |    http://www.graphviz.org/ |
-|	python       |   http://www.python.org/    |
-|	xsltproc     |  http://xmlsoft.org/XSLT/   |
-|	md5sum       | http://www.microbrew.org/tools/md5sha1sum/ |
-|	pkg-config   | http://pkg-config.freedesktop.org/wiki/ |
+| Product      | Availability |
+|:------------ |:------------ |
+| doxygen      |     http://www.doxygen.org/ |
+| graphviz     |    http://www.graphviz.org/ |
+| python       |   http://www.python.org/    |
+| xsltproc     |  http://xmlsoft.org/XSLT/   |
+| md5sum       | http://www.microbrew.org/tools/md5sha1sum/ |
+| pkg-config   | http://pkg-config.freedesktop.org/wiki/ |
 
-## Support
+[TOC](#TOC)
+
+<name id="3"></a>
+## 3 License and Support
 
 All project resources are accessible from the project website.
     https://github.com/Exiv2/exiv2
 
-For new bug reports and feature requests, please open an issue in Github.
+<name id="3-1"></a>
+### 3.1 License
 
-## Download built libraries and linking your own code with Exiv2
-
-You can download pre-built 'bundles' which include documentation.
-
-[[Linux](http://exiv2.dyndns.org/0.27.0.1/bundles/exiv2-0.27.0.1-Linux.tar.gz)]
-[[MacOSX](http://exiv2.dyndns.org/0.27.0.1/bundles/exiv2-0.27.0.1-Darwin.tar.gz)]
-[[Cygwin](http://exiv2.dyndns.org/0.27.0.1/bundles/exiv2-0.27.0.1-CYGWIN.tar.gz)]
-[[MinGW](http://exiv2.dyndns.org/0.27.0.1/bundles/exiv2-0.27.0.1-MinGW.tar.gz)]
-[[MSVC](http://exiv2.dyndns.org/0.27.0.1/bundles/exiv2-0.27.0.1-msvc.zip)]
-
-The file "ReadMe.txt" in a bundle describes how to install/link code with libraries for their respective platform.
-The file "license.txt" in a bundle describes is a copy of GPLv2 License
-
-
-
-## License
-
-Copyright (C) 2004-2018 Exiv2 authors
+Copyright (C) 2004-2018 Exiv2 authors.
+You should have received a copy of the file `license.txt` which details the GPLv2 license.
 
 Exiv2 is free software; you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free
@@ -114,15 +155,59 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, 5th Floor, Boston,
 MA 02110-1301 USA.
 
-## Platform Notes
-These are rough notes, to be polished.
+[TOC](#TOC)
 
-### MinGW msys/2 64
+<name id="3-2"></a>
+### 3.2 Support
+For new bug reports and feature requests, please open an issue in Github.
+
+[TOC](#TOC)
+
+<name id="4"></a>
+## 4 Platform Notes
+
+<name id="4-1"></a>
+### 4.1 Linux
+
+Update your system and install the build tools.
+
+```
+sudo apt --yes update
+sudo apt install --yes build-essential git libxml2-utils cmake python3 libexpat1-dev
+```
+
+Get the code from Git and Build
+
+```
+$ mkdir -p ~/gnu/github/exiv2
+$ git clone https://github.com/exiv2/exiv2
+$ cd exiv2
+$ mkdir build ; cd build ;
+$ cmake .. -G "Unix Makefiles"
+$ make
+```
+[TOC](#TOC)
+
+<name id="4-2"></a>
+### 4.2 MacOS-X
+
+You will need to install Xcode and the Xcode command-line tools to build anything on the Mac.
+
+You should build and install libexpat and zlib from source.
+
+You should build and install CMake from source.
+
+[TOC](#TOC)
+
+<name id="4-3"></a>
+### 4.3 MinGW msys/2 64
 
 https://www.msys2.org
 Download:  http://repo.msys2.org/distrib/x86_64/msys2-x86_64-20180531.exe
 
 #### msys64.bat
+
+I use this batch file to start the MinGW bash shell.
 
 ```
 554 rmills@rmillsmm-w7:/c/Users/rmills/com $ cat msys64.bat
@@ -139,7 +224,7 @@ bash.exe -norc
 $ for i in mingw-w64-x86_64-gcc mingw-w64-x86_64-gdb mingw-w64-x86_64-make mingw-w64-x86_64-pkg-config mingw-w64-x86_64-cmake; do (echo y|pacman -S $i); done
 ```
 
-#### Download exiv2 from github
+#### Download exiv2 from github and build.
 
 ```
 $ mkdir -p ~/gnu/github/exiv2
@@ -149,22 +234,49 @@ $ mkdir build ; cd build ;
 $ cmake .. -G "Unix Makefiles"
 $ make
 ```
+[TOC](#TOC)
 
-### Cygwin
+<name id="4-4"></a>
+### 4.4 Cygwin
 
 Download: https://cygwin.com/install.html and run setup-x86_64.exe
 
 You need:
-cmake, gcc, pkg-config, dos2unix, zlib-devel, libexpat-devel, make, git, python3-interpreter, libiconv, libxml2-utils
+make, cmake, gcc, pkg-config, dos2unix, zlib-devel, libexpat1-devel, git, python3-interpreter, libiconv, libxml2-utils, libncurses.
 
-To build cmake (from 3.11.2), you need libncurses
+Download and build libiconv-1.15:
+https://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.15.tar.gz
 
-### Linux
+Download and build cmake from source because I can't get the cygwin installed cmake 3.6.2 to work
+To build cmake from source (for 3.11+), you need libncurses.
 
 
-```
-sudo apt-get update
-sudo apt-get install build-essential
+[TOC](#TOC)
 
-gcc,  	libxml2-utils
-```
+<name id="4-5"></a>
+### 4.5 Microsoft Visual C++
+
+We recommend that you use Conan to build Exiv2 using Microsoft Visual C++.  For v0.27, we support Visual Studio 2008, 2010, 2012, 2013, 2015 and 2017.
+
+As well as Microsoft Visual Studio, you will need to install CMake, Python3, and Conan.
+1) Binary installers for CMake on Windows are availably from kitware.org.
+2) Binary installers for Python3 are available from python.org
+3) Conan can be installed using python/pip.  Details in README-CONAN.md
+
+[TOC](#TOC)
+
+<name id="5"></a>
+## 5 Running the test suite
+
+<name id="5-1"></a>
+### 5.1 Running tests on a UNIX-like system
+
+To be written
+[TOC](#TOC)
+
+<name id="5-2"></a>
+### 5.2 Running tests on Visual Studio builds
+
+To be written
+[TOC](#TOC)
+
