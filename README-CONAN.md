@@ -75,7 +75,7 @@ $ cd build
 $ conan profile list
 ```
 
-**IMPORTANT** _**Visual Studio Users**_ require the profile msvc2017Release64 in %HOMEPATH%/.conan/profile/msvc2017Release64
+**IMPORTANT** _**Visual Studio Users**_ require the profile msvc2017Release64 in %HOMEPATH%\.conan\profiles\msvc2017Release64
 
 ```ini
 [build_requires]
@@ -284,7 +284,11 @@ $ cmake --build .  --config Release
 
 If you have Cygwin installed on your build machine, you may encounter the situation
 that CMake erroneously finds library files in Cygwin directories and adds `c:\\cygwin64\\usr\\include` to the
-compiler header search path.  FindIntl is a prime suspect and believe it's caused by %PATH%.
+compiler header search path.  FindIntl is a prime suspect and I believe this issue is caused by %PATH%.
+
+I recommend that you disable Natural Language Support when building with Visual Studio:
+
+$ cmake .. -G "Visual Studio 15 2017 Win64" -DCMAKE_BUILD_TYPE=Release -DEXIV2_ENABLE_NLS=Off
 
 If necessary, temporarily rename c:\\cygwin64\\usr\\include as c:\\cygwin64\\usr\\uncle to hide those files when working with CMake.
 

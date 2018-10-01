@@ -2,13 +2,7 @@
 |:-------------:|:-------------:|:-----:|:------:|
 | [![Build Status](https://travis-ci.org/Exiv2/exiv2.svg?branch=master)](https://travis-ci.org/Exiv2/exiv2) | [![Build status](https://ci.appveyor.com/api/projects/status/d6vxf2n0cp3v88al/branch/master?svg=true)](https://ci.appveyor.com/project/piponazo/exiv2-wutfp/branch/master) | [![pipeline status](https://gitlab.com/D4N/exiv2/badges/master/pipeline.svg)](https://gitlab.com/D4N/exiv2/commits/master) | [![codecov](https://codecov.io/gh/Exiv2/exiv2/branch/master/graph/badge.svg)](https://codecov.io/gh/Exiv2/exiv2) |
 
-![Exiv2](http://www.exiv2.org/include/exiv2-logo-big.png)
-
-Exiv2 is a C++ library and a command line utility to read and
-write Exif, IPTC and XMP image metadata. The homepage of Exiv2 is: https://github.com/Exiv2/exiv2
-
 <name id="TOC"></a>
-----
 ### T A B L E &nbsp;&nbsp;&nbsp; O&nbsp;&nbsp;F &nbsp;&nbsp;&nbsp; C O N T E N T S
 
 1. [Welcome to Exiv2](#1)
@@ -33,8 +27,12 @@ write Exif, IPTC and XMP image metadata. The homepage of Exiv2 is: https://githu
 
 
 <name id="1"></a>
-----
-## Welcome to Exiv2
+# Welcome to Exiv2
+
+![Exiv2](http://www.exiv2.org/include/exiv2-logo-big.png)
+
+Exiv2 is a C++ library and a command line utility to read and
+write Exif, IPTC and XMP image metadata. The homepage of Exiv2 is: https://github.com/Exiv2/exiv2
 
 Downloads: [[Source](http://exiv2.dyndns.org/0.27.0.1/bundles/exiv2-0.27.0.1-Source.tar.gz)]
 [[Linux](http://exiv2.dyndns.org/0.27.0.1/bundles/exiv2-0.27.0.1-Linux.tar.gz)]
@@ -42,11 +40,10 @@ Downloads: [[Source](http://exiv2.dyndns.org/0.27.0.1/bundles/exiv2-0.27.0.1-Sou
 [[Cygwin](http://exiv2.dyndns.org/0.27.0.1/bundles/exiv2-0.27.0.1-CYGWIN.tar.gz)]
 [[MinGW](http://exiv2.dyndns.org/0.27.0.1/bundles/exiv2-0.27.0.1-MinGW.tar.gz)]
 [[MSVC](http://exiv2.dyndns.org/0.27.0.1/bundles/exiv2-0.27.0.1-msvc.zip)]
+[[Documentation](http://exiv2.dyndns.org/0.27.0.1/doc/index.html)]
 
 The file "ReadMe.txt" in a bundle describes how to install/link code with libraries for their respective platform.
-The file "license.txt" in a bundle describes is a copy of GPLv2 License
-
-Documentation: [Docs](http://exiv2.dyndns.org/0.27.0.1/doc/index.html)
+The file [license.txt](license.txt) in a bundle describes is a copy of GPLv2 License
 
 <name id="2"></a>
 ## 2 Building and Installing
@@ -74,7 +71,7 @@ Please read [README-CMAKE](README-CMAKE.md) for more detailed information about 
 ### 2.2 Build/Install Exiv2 with Visual Studio
 
 We recommend that you use cocan with CMake to build  Exiv2 with Visual Studio.
-See [README-CONAN](http://exiv2.dyndns.org/0.27.0.1/README-CONAN.md) for more information
+See [README-CONAN](README-CONAN.md) for more information
 
 <name id="2-3"></a>
 ### 2.3 Uninstall Exiv2 on a UNIX-like system:
@@ -110,10 +107,10 @@ libraries).
 <name id="2-5"></a>
 ### 2.5 Building Exiv2 Documentation
 
-To generate the documentation (`make doc`):
-
-	$ cmake ..options.. -DEXIV2_BUILD_DOC=On
-	$ make doc
+```
+$ cmake ..options.. -DEXIV2_BUILD_DOC=On
+$ make doc
+```
 
 To build the documentation, you will need the following products:
 
@@ -138,7 +135,7 @@ All project resources are accessible from the project website.
 ### 3.1 License
 
 Copyright (C) 2004-2018 Exiv2 authors.
-You should have received a copy of the file `license.txt` which details the GPLv2 license.
+You should have received a copy of the file [license.txt](license.txt) which details the GPLv2 license.
 
 Exiv2 is free software; you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free
@@ -207,21 +204,23 @@ Download:  http://repo.msys2.org/distrib/x86_64/msys2-x86_64-20180531.exe
 
 #### msys64.bat
 
-I use this batch file to start the MinGW bash shell.
+I use this batch file to start the MinGW bash shell from the Dos Command Prompt (cmd.exe)
 
 ```
-554 rmills@rmillsmm-w7:/c/Users/rmills/com $ cat msys64.bat
+$ cat msys64.bat
 setlocal
 set "PATH=c:\msys64\usr\bin;c:\msys64\usr\local\bin;c:\msys64\mingw64\bin;"
 set "PS1=\! \u@\h:\w \$ "
 bash.exe -norc
-555 rmills@rmillsmm-w7:/c/Users/rmills/com $
+$
 ```
 
 #### Install MinGW Dependencies
 
+$ pacman -S base-devel
+
 ```
-$ for i in mingw-w64-x86_64-gcc mingw-w64-x86_64-gdb mingw-w64-x86_64-make mingw-w64-x86_64-pkg-config mingw-w64-x86_64-cmake; do (echo y|pacman -S $i); done
+$ for i in libtre git coreutils mingw-w64-x86_64-gcc mingw-w64-x86_64-gdb mingw-w64-x86_64-make mingw-w64-x86_64-pkg-config mingw-w64-x86_64-cmake; do (echo y|pacman -S $i); done
 ```
 
 #### Download exiv2 from github and build.
@@ -268,15 +267,51 @@ As well as Microsoft Visual Studio, you will need to install CMake, Python3, and
 <name id="5"></a>
 ## 5 Running the test suite
 
+The test suite is a mix of bash and python scripts.  The python scripts are new to v0.27 and the bash scripts are being replaced as time permits.
+
 <name id="5-1"></a>
 ### 5.1 Running tests on a UNIX-like system
 
-To be written
+You can run the suite directly from the build:
+
+$ make build
+...
+$ make tests
+... lots of output ...
+Summary report
+
+You can run individual tests in the test directory using the environment string EXIV2_BINDIR to specify the location of the build artifacts:
+
+rmills@rmillsmbp-w7 ~/gnu/github/exiv2/exiv2/build $ cd ../test
+
+rmills@rmillsmbp-w7 ~/gnu/github/exiv2/exiv2/test $ env EXIV2_BINDIR=${PWD}/../build/bin ./icc-test.sh
+ICC jpg md5 webp md5 png md5 jpg md5
+all testcases passed.
+
+rmills@rmillsmbp-w7 ~/gnu/github/exiv2/exiv2/test $ env EXIV2_BINDIR=${PWD}/../build/bin make newtests
+
 [TOC](#TOC)
 
 <name id="5-2"></a>
 ### 5.2 Running tests on Visual Studio builds
 
-To be written
+Use the bash interpreter for MinGW/msys/2 to run the test suite.
+
+$ cd ...../build/../test
+$ export EXIV2_EXT=.exe
+$ export EXIV2_BINDIR=${PWD}/../build/bin
+
+It's essential to have a DOS Python3 interpreter on your path.
+
+$ PATH="/c/Python36:$PATH"
+
+These variables enables the test suite to locate the MSVC build artifacts and you can follow the guidelines for UNIX-like systems above.
+
+```
+$ make tests
+$ make newtests
+$ ./icc-test.sh
+```
+
 [TOC](#TOC)
 
