@@ -989,16 +989,11 @@ namespace Exiv2 {
 namespace Exiv2 {
     namespace Internal {
 
-#ifdef  MSDEV_2003
-#undef  vsnprintf
-#define vsnprintf _vsnprintf
-#endif
-
     std::string stringFormat(const char* format, ...)
     {
         std::string result;
         std::vector<char> buffer;
-        size_t need = std::strlen(format);                 // initial guess
+        size_t need = std::strlen(format)*8;               // initial guess
         int    rc   = -1;
 
         // vsnprintf writes at most size (2nd parameter) bytes (including \0)
