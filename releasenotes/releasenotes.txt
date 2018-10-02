@@ -6,16 +6,18 @@ RC2 will be v0.27.0.2 Scheduled: November 2018
 
 I have to thank Dan and Luis for their huge contribution to make this release.
 
-I'd like to thank Ben, Freddy, Henri, Michal, Phil and Shridar for their contributions.
+I'd also like to thank Ben, Freddy, Henri, Michal, Phil, Shridar and Thomas for their contributions.
 If I've forgotten you, please let me know so I can add your name to this acknowledgement.
 
 The headline features are:
 1) Many security fixes
 2) New CMake build infrastructure
 3) New conan support to build dependencies
-4) New test harness
-5) Support for Adobe XMPsdk 2016
-6) Many bug fixes
+4) New python base test harness
+5) Support for MinGW msys/2
+6) Tested by GitLabs on many Linux distros
+7) Support for Adobe XMPsdk 2016
+8) Many bug fixes
 
 With Exiv2 v0.27, Team Exiv2 will offer "Long Term Support" and plan "dot" releases with security and critical fixes in 2019 and 2020.
 
@@ -25,7 +27,6 @@ Focus of Exiv2 v0.28
 Exiv2 moves into the future with Exiv2 v0.28.
 The code will be "modernised to C++11 and later".
 Users of Elderly compilers such as GCC4 and Visual Studio (<2015) will be supported with 'dot' releases.
-To use Exiv2 v0.28, applications must be built with"modern" build systems such as GCC 7+ and Visual Studio 2015 and later.
 
 Known Issues on Redmine for v0.27
 ---------------------------------
@@ -33,22 +34,19 @@ Known Issues on Redmine for v0.27
 The following issues on Redmine are unresolved and require additional work.
 With the exception of #1270, work-arounds have been provided for most of those issues.
 
+57 issues have been closed
 http://dev.exiv2.org/projects/exiv2/issues
 
+Open: (9)
+	0001347	Segfault in Digikam when saving/loading certain TIFF images
 	0001346	Assertion failure in Exiv2::Internal::CiffComponent::doRead() in libexiv2
 	0001345	Assertion Failure (SIGABRT) in Exiv2:RafImage::readMetadata() in Libexiv2
 	0001341	Date/Time Original not modified for NEFs
 	0001340	Infinite loop bugs in Libexiv2 Exiv2::Image::printIFDStructure()
 	0001324	Pentax Makernote written twice
-	0001306	Lens TAMRON SP 15-30mm F/2.8 Di VC USD A012 is not properly recognised
+	0001306	the lens TAMRON SP 15-30mm F/2.8 Di VC USD A012 is not properly recognised
 	0001304	Lens missing Tamron SP 90mm f/2.8 Di Macro 1:1 VC USD F017
 	0001270	Using libexiv2.a/.lib  in multhreaded app segfaults.
-
-Resolved Issues on Redmine for v0.27
-------------------------------------
-
-53 issues have been 'closed'
-http://dev.exiv2.org/projects/exiv2/issues
 
 Build: (7)
 	0001362	Fix Clang build
@@ -68,9 +66,9 @@ Duplicate: (1)
 Exif: (6)
 	0001320	It is a heap-buffer-overflow in Exiv2::Jp2Image::readMetadata (jp2image.cpp:277)
 	0001319	It is a heap-buffer-overflow in Exiv2::us2Data (types.cpp:346)
-	0001318	 Invalid memory address dereference in Exiv2::StringValueBase::read ( in value.cpp:302)
+	0001318	Invalid memory address dereference in Exiv2::StringValueBase::read ( in value.cpp:302)
 	0001317	It is a heap-buffer-overflow in Exiv2::s2Data (types.cpp:383)
-	0001316	 It is a heap-buffer-overflow in Exiv2::l2Data (types.cpp:398)
+	0001316	It is a heap-buffer-overflow in Exiv2::l2Data (types.cpp:398)
 	0001315	Invalid memory address dereference in Exiv2::DataValue::read (value.cpp:193)
 
 Insufficient information: (1)
@@ -83,7 +81,9 @@ Image format: (5)
 	0001338	Exiv2 aborted (crashed) with "Error in `exiv2': free(): invalid next size (fast)"
 	0001334	Version 0.26 is returns unwanted data when the key value is received from RW2 files (Panasonic DMC-GF6 camera)
 
-Lens: (15)
+Lens: (17)
+	0001366	Feature Request Sigma 85mm f/1.4 DG Art Series
+	0001365	Feature Request fr Sigma 135mm f/1.8 DG Art Series
 	0001361	Wrongly identified Canon 2x extender as 1.4x extender with Tamron lens
 	0001355	New lens Tamron 100-400mm F/4.5-6.3 Di VC USD
 	0001351	Add lens: Sigma 120-300mm f/2.8 G VR
@@ -100,37 +100,40 @@ Lens: (15)
 	0001306	the lens TAMRON SP 15-30mm F/2.8 Di VC USD A012 is not properly recognised
 	0001304	Lens missing Tamron SP 90mm f/2.8 Di Macro 1:1 VC USD F017
 
+Makernote: (2)
+	0001343	Irix 15mm f/2.4 on Nikon
+	0001324	Pentax Makernote written twice
+
 Miscellaneous: (2)
 	0001314	it is a stack-overflow vulnerability in Exiv2::Internal::stringFormat[abi:cxx11] ( in image.cpp:975 )
 	0001305	Segmentation fault on certain image
 
 Metadata: (7)
 	0001341	Date/Time Original not modified for NEFs
-	0001340	 Infinite loop bugs in Libexiv2 Exiv2::Image::printIFDStructure()
+	0001340	Infinite loop bugs in Libexiv2 Exiv2::Image::printIFDStructure()
 	0001325	Crash in exiv2  - Nikon1MakerNote::printBarValue (nikonnm.cpp)
 	0001322	Exception in PentaxMakerNote::printShutterCount, source: pentaxmn.cpp
-	0001321	 Invalid memory address dereference in Exiv2::getULong(types.cpp:246)
+	0001321	Invalid memory address dereference in Exiv2::getULong(types.cpp:246)
 	0001301	New lens: Sigma 18-35mm f/1.8 DC HSM Art for Canon
 	0001300	New lens: Canon EF-S 35mm f/2.8 Macro IS STM
 
-Makernote: (2)
-	0001343	Irix 15mm f/2.4 on Nikon
-	0001324	Pentax Makernote written twice
-
-Not-a-bug: (5)
+Not-a-bug: (8)
+	0001369	New lens Yongnuo 50mm f/1.8 II for Canon
+	0001368	Canon EF-M 15-45 broken LensType
+	0001367	New Lens Sigma 100-400 mm, F5-6.3 DG for Nikon
 	0001364	New lens Tamron SP 24-70mm F/2.8 Di VC USD G2
 	0001350	Add lens: AF-S DX Nikkor 18-140mm
 	0001349	Add lens: Sigma 50-100mm F1.8 DC HSM | A
 	0001344	Unknown metadata
 	0001331	exiv2 fails to delete bulk of metadata in jpeg
 
-Tools: (1)
-	0001303	#1 Use 'releases' feature on GitHub
-
 Tiff parser: (3)
 	0001360	exiv2 can't read metadata from tiff file (tiff directory length is too large)
 	0001359	This does not look like a TIFF image
 	0001330	Crash in Exiv2::TiffImage::readMetadata
+
+Tools: (1)
+	0001303	#1 Use 'releases' feature on GitHub
 
 Website: (2)
 	0001308	Move directory <exiv2dir>/website to svn://dev.exiv2.org/svn/team/website
@@ -153,4 +156,4 @@ To be written.
 
 Robin Mills
 robin@clanmills.com
-2018-09-18
+2018-10-02
