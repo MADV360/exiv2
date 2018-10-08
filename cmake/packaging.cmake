@@ -32,9 +32,8 @@ install(DIRECTORY "${PROJECT_SOURCE_DIR}/contrib/" DESTINATION "contrib")
 # Copy top level documents (eg README.md)
 # https://stackoverflow.com/questions/21541707/cpack-embed-text-files
 set( DOCS
-     README-CMAKE.md
-     README-CONAN.md
      README.md
+     README-CONAN.md
      license.txt
 )
 foreach(doc ${DOCS})

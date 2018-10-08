@@ -9,7 +9,7 @@ please visit the [Conan documentation website](http://docs.conan.io/en/latest/).
 
 Although we provide step-by-step instructions to enable you to build Exiv2 with conan, we recommend that you read conan's documentation to understand the main concepts: [Getting started with Conan](http://docs.conan.io/en/latest/getting_started.html)
 
-To build Exiv2 with conan, you will also need to install CMake.  For more information see [README-CMAKE](README-CMAKE)
+To build Exiv2 with conan, you will also need to install CMake.  https://cmake.org/download/
 
 <name id="TOC"></a>
 ----
@@ -111,10 +111,6 @@ The output from this command is quite long as conan downloads or builds zlib, ex
 ```bash
 $ cmake ..  # -G "Visual Studio 15 2017 Win64" -DCMAKE_BUILD_TYPE=Release
 ```
-
-_**Visual Studio Users**_ should use define the Generator and Build Type:
-
-More information about CMake/Exiv2: [README-CMAKE](README-CMAKE).
 
 <name id="1-6"></a>
 ##### 1.6) Build Exiv2:
@@ -295,14 +291,14 @@ If necessary, temporarily rename c:\\cygwin64\\usr\\include as c:\\cygwin64\\usr
 <name id="2-3"></a>
 ### 2.3) Cygwin Notes
 
-Do not use conan on the Cygwin Platform.  To build Exiv2 for Cygwin use CMake.  See [README-CMAKE](README-CMAKE)
+Do not use conan on the Cygwin Platform.  To build Exiv2 for Cygwin use CMake without conan.  We recommend installing or building dependences (expat, zlib) with platform tools.
 
 <name id="2-4"></a>
 ### 2.4) MinGW Notes
 
-Team Exiv2 does not provide support for MinGW.
+Team Exiv2 supports MinGW msys/2.  Team Exiv2 does not support MinGW msys/1.0.
 
-Users have reported success with CMake (without conan) on both msys/1.0 and msys/2.0.
+As with Cygwin, we recommend installing or building dependencies with platform tools dependencies and using CMake to build Exiv2.
 
 [TOC](#TOC)
 

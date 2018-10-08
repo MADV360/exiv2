@@ -10,8 +10,11 @@
     1. [Build/Install Exiv2 on a UNIX-like system](#2-1)
     2. [Build/Install Exiv2 with Visual Studio](#2-2)
     3. [Uninstall Exiv2 on a UNIX-like system](#2-3)
-    4. [Dependencies](#2-4)
-    5. [Building Exiv2 Documentation](#2-5)
+    4. [Build Options](#2-4)
+    5. [Dependencies](#2-5)
+    6. [Consuming Exiv2 with CMake](#2-6)
+    7. [Building Exiv2 Documentation](#2-7)
+    8. [Building Exiv2 Packages](#2-8)
 3. [License and Support](#2)
     1. [License](#3-1)
     2. [Support](#3-2)
@@ -41,6 +44,7 @@ Downloads: [[Source](http://exiv2.dyndns.org/0.27.0.1/bundles/exiv2-0.27.0.1-Sou
 [[MinGW](http://exiv2.dyndns.org/0.27.0.1/bundles/exiv2-0.27.0.1-MinGW.tar.gz)]
 [[MSVC](http://exiv2.dyndns.org/0.27.0.1/bundles/exiv2-0.27.0.1-msvc.zip)]
 [[Documentation](http://exiv2.dyndns.org/0.27.0.1/doc/index.html)]
+[[CMake](https://cmake.org/download/)]
 
 The file "ReadMe.txt" in a bundle describes how to install/link code with libraries for their respective platform.
 The file [license.txt](license.txt) in a bundle describes is a copy of GPLv2 License
@@ -48,9 +52,7 @@ The file [license.txt](license.txt) in a bundle describes is a copy of GPLv2 Lic
 <name id="2"></a>
 ## 2 Building and Installing
 
-You will need CMake to build Exiv2:  https://cmake.org/download/
-
-Please read [README-CMAKE](README-CMAKE.md) for more detailed information about building Exiv2.
+You need CMake to build Exiv2:  https://cmake.org/download/
 
 <name id="2-1"></a>
 ### 2.1 Build/Install Exiv2 on a UNIX-like system:
@@ -81,7 +83,55 @@ See [README-CONAN](README-CONAN.md) for more information
 [TOC](#TOC)
 
 <name id="2-4"></a>
-### 2.4 Dependencies
+### 2.4 Build options
+
+There are two groups of CMake options.  Options defined by CMake include:
+
+| Options       | Purpose       |
+|:------------- |:------------- |
+| CMAKE\_INSTALL\_PREFIX | where to install on your computer _**(/usr/local)**_ |
+| CMAKE\_BUILD\_TYPE     | type of build _**(Release)**__|
+| BUILD\_SHARED\_LIBS    | build exiv2lib as shared or static _**(On)**_ |
+
+Options defined by <exiv2>/CMakeLists.txt:
+
+```
+576 rmills@rmillsmm:~/gnu/github/exiv2/exiv2 $ grep ^option CMakeLists.txt
+option( BUILD_SHARED_LIBS             "Build exiv2lib as a shared library"                    ON  )
+option( EXIV2_ENABLE_XMP              "Build with XMP metadata support"                       ON  )
+option( EXIV2_ENABLE_EXTERNAL_XMP     "Use external version of XMP"                           OFF )
+option( EXIV2_ENABLE_PNG              "Build with png support (requires libz)"                ON  )
+option( EXIV2_ENABLE_NLS              "Build native language support (requires gettext)"      ON  )
+option( EXIV2_ENABLE_PRINTUCS2        "Build with Printucs2"                                  ON  )
+option( EXIV2_ENABLE_LENSDATA         "Build including lens data"                             ON  )
+option( EXIV2_ENABLE_VIDEO            "Build video support into library"                      OFF )
+option( EXIV2_ENABLE_WEBREADY         "Build webready support into library"                   OFF )
+option( EXIV2_ENABLE_DYNAMIC_RUNTIME  "Use dynamic runtime (used for static libs)"            OFF )
+option( EXIV2_ENABLE_WIN_UNICODE      "Use Unicode paths (wstring) on Windows"                OFF )
+option( EXIV2_ENABLE_CURL             "USE Libcurl for HttpIo"                                OFF )
+option( EXIV2_ENABLE_SSH              "USE Libssh for SshIo"                                  OFF )
+option( EXIV2_BUILD_SAMPLES           "Build sample applications"                             ON  )
+option( EXIV2_BUILD_PO                "Build translations files"                              OFF )
+option( EXIV2_BUILD_EXIV2_COMMAND     "Build exiv2 command-line executable"                   ON  )
+option( EXIV2_BUILD_UNIT_TESTS        "Build unit tests"                                      OFF )
+option( EXIV2_BUILD_DOC               "Add 'doc' target to generate documentation"            OFF )
+option( EXIV2_TEAM_EXTRA_WARNINGS     "Add more sanity checks using compiler flags"           OFF )
+option( EXIV2_TEAM_WARNINGS_AS_ERRORS "Treat warnings as errors"                              OFF )
+option( EXIV2_TEAM_USE_SANITIZERS     "Enable ASAN and UBSAN when available"                  OFF )
+option( BUILD_WITH_CCACHE             "Use ccache to speed up compilations"                   OFF )
+option( BUILD_WITH_COVERAGE           "Add compiler flags to generate coverage stats"         OFF )
+577 rmills@rmillsmm:~/gnu/github/exiv2/exiv2 $
+```
+
+Options are defined on the CMake command line:
+```
+$ cmake -DBUILD_SHARED_LIBS=On -DEXIV2_ENABLE_NLS=OFF
+```
+
+[TOC](#TOC)
+
+<name id="2-5"></a>
+### 2.5 Dependencies
 
 You can choose to use dependent libraries using your platform's package installer.
 
@@ -104,8 +154,17 @@ libraries).
 
 [TOC](#TOC)
 
-<name id="2-5"></a>
-### 2.5 Building Exiv2 Documentation
+<name id="2-6"></a>
+### 2.6 Consuming Exiv2 with CMake
+
+When installing exiv2 by running the **install** target we get some files under the folder
+`${CMAKE_INSTALL_PREFIX}/share/exiv2/cmake/`.
+
+In the example project https://github.com/piponazo/exiv2Consumer you could see how to consume
+exiv2 via CMake by using these files.
+
+<name id="2-7"></a>
+### 2.7 Building Exiv2 Documentation
 
 ```
 $ cmake ..options.. -DEXIV2_BUILD_DOC=On
@@ -122,6 +181,43 @@ To build the documentation, you will need the following products:
 | xsltproc     |  http://xmlsoft.org/XSLT/   |
 | md5sum       | http://www.microbrew.org/tools/md5sha1sum/ |
 | pkg-config   | http://pkg-config.freedesktop.org/wiki/ |
+
+[TOC](#TOC)
+
+<name id="2-8"></a>
+### 2.8 Building Exiv2 Packages
+
+There are two types of Exiv2 packages which are generated by cpack from the cmake command-line.
+
+1) Binary Package (library, headers, documentation and sample applications)
+
+Create and build exiv2 for your plantform.
+
+```bash
+$ git clone https://github.com/exiv2/exiv2
+$ mkdir -p exiv2/build
+$ cd       exiv2/build
+$ cmake .. -G "Unix Makefiles"
+...
+-- Build files have been written to: .../build
+$ cmake --build . --config Release
+...
+[100%] Built target addmoddel
+$ make package
+...
+CPack: - package: /path/to/exiv2/build/exiv2-0.27.0.1-Linux.tar.gz generated.
+```
+
+2) Source Package
+
+```bash
+$ make package_source
+Run CPack packaging tool for source...
+...
+CPack: - package: /media/linuxDev/programming/exiv2/build/exiv2-0.27.0.1-Source.tar.bz2 generated.
+```
+
+You may prefer to run `$ cmake --build . --config Release --target package_source`
 
 [TOC](#TOC)
 
