@@ -10,7 +10,7 @@
 #include "XMPCore_Impl.hpp"
 
 #include "XMPIterator.hpp"
-#include "client-glue/WXMPIterator.hpp"
+#include "WXMPIterator.hpp" //#include "client-glue/WXMPIterator.hpp"
 
 #if XMP_WinBuild
 #   ifdef _MSC_VER

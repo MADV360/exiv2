@@ -2,12 +2,14 @@
    See the file COPYING for copying permission.
 */
 
+#include <stdlib.h>
 #include <stddef.h>
 #include <string.h>                     /* memset(), memcpy() */
 #include <assert.h>
 #include <limits.h>                     /* UINT_MAX */
 #include <time.h>                       /* time() */
 
+#define HAVE_MEMMOVE 1
 #define XML_BUILDING_EXPAT 1
 
 #ifdef COMPILED_FROM_DSP
@@ -1565,7 +1567,7 @@ XML_Parse(XML_Parser parser, const char *s, int len, int isFinal)
     else {
       switch (ps_parsing) {
       case XML_SUSPENDED:
-        result = XML_STATUS_SUSPENDED;
+        result = (XML_Error)XML_STATUS_SUSPENDED;
         break;
       case XML_INITIALIZED:
       case XML_PARSING:
@@ -1575,7 +1577,7 @@ XML_Parse(XML_Parser parser, const char *s, int len, int isFinal)
         }
       /* fall through */
       default:
-        result = XML_STATUS_OK;
+        result = (XML_Error)XML_STATUS_OK;
       }
     }
 
@@ -1605,7 +1607,7 @@ XML_Parse(XML_Parser parser, const char *s, int len, int isFinal)
     parseEndPtr = bufferEnd;
     eventPtr = bufferPtr;
     eventEndPtr = bufferPtr;
-    return result;
+    return (XML_Status)result;
   }
 #endif  /* not defined XML_CONTEXT_BYTES */
   else {

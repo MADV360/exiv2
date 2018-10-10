@@ -26,7 +26,7 @@
  */
 // *****************************************************************************
 // included header files
-#include "config.h"
+#include "../include/config.h"
 #include "types.hpp"
 #include "exif.hpp"
 #include "iptc.hpp"
@@ -60,11 +60,11 @@
 #ifdef EXV_HAVE_XMP_TOOLKIT
 # define TXMP_STRING_TYPE std::string
 # ifdef EXV_ADOBE_XMPSDK
-#  include <XMP.hpp>
+#  include "XMP.hpp" // #include <XMP.hpp> //
 # else
-#  include <XMPSDK.hpp>
+#  include "XMPSDK.hpp" // #include <XMPSDK.hpp> //
 # endif
-# include <MD5.h>
+# include "MD5.h" // # include <MD5.h> //
 #endif // EXV_HAVE_XMP_TOOLKIT
 
 // *****************************************************************************

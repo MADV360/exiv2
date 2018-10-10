@@ -29,7 +29,7 @@
 
 /******************************************************************************/
 
-#include "public/include/XMP_Const.h"	// For safe fixed integer sizes.
+#include "XMP_Const.h" //#include "public/include/XMP_Const.h"	// For safe fixed integer sizes.
 
 /* MD5 context. */
 struct MD5_CTX

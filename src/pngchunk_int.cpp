@@ -22,7 +22,7 @@
  */
 // *****************************************************************************
 // included header files
-#include "config.h"
+#include "../include/config.h"
 
 #ifdef EXV_HAVE_LIBZ
 #include "pngchunk_int.hpp"

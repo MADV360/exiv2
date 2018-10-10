@@ -25,7 +25,7 @@
  */
 // *****************************************************************************
 // included header files
-#include "config.h"
+#include "../include/config.h"
 
 #include "crwimage.hpp"
 #include "crwimage_int.hpp"

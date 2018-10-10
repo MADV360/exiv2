@@ -1652,11 +1652,13 @@ namespace Exiv2 {
                 "this tag value of this tag always be set to 3, indicating "
                 "that the image was recorded on a DSC."),
                 exifId, captureCond, undefined, 1, print0xa300),
+                //exifId, captureCond, unsignedLong, 1, printValue),
         TagInfo(0xa301, "SceneType", N_("Scene Type"),
                 N_("Indicates the type of scene. If a DSC recorded the image, "
                 "this tag value must always be set to 1, indicating that the "
                 "image was directly photographed."),
                 exifId, captureCond, undefined, 1, print0xa301),
+                //exifId, captureCond, unsignedLong, 1, printValue),
         TagInfo(0xa302, "CFAPattern", N_("Color Filter Array Pattern"),
                 N_("Indicates the color filter array (CFA) geometric pattern of the "
                 "image sensor when a one-chip color area sensor is used. "

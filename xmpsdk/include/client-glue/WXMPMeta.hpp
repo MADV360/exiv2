@@ -9,7 +9,7 @@
 // of the Adobe license agreement accompanying it.
 // =================================================================================================
 
-#include "client-glue/WXMP_Common.hpp"
+#include "WXMP_Common.hpp" // #include "client-glue/WXMP_Common.hpp"
 
 #if __cplusplus
 extern "C" {

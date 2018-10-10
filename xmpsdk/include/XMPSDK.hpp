@@ -73,9 +73,9 @@
     typedef class TXMPUtils <TXMP_STRING_TYPE>    SXMPUtils;
     #if TXMP_EXPAND_INLINE
     	#error "TXMP_EXPAND_INLINE is not working at present. Please don't use it."
-        #include "client-glue/TXMPMeta.incl_cpp"
-        #include "client-glue/TXMPIterator.incl_cpp"
-        #include "client-glue/TXMPUtils.incl_cpp"
+        #include "TXMPMeta.incl_cpp" //#include "client-glue/TXMPMeta.incl_cpp"
+        #include "TXMPIterator.incl_cpp" //#include "client-glue/TXMPIterator.incl_cpp"
+        #include "TXMPUtils.incl_cpp" //#include "client-glue/TXMPUtils.incl_cpp"
     #endif
 
 #endif  // TXMP_STRING_TYPE

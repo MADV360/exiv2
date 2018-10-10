@@ -24,7 +24,7 @@
  */
 // *****************************************************************************
 // included header files
-#include "config.h"
+#include "../include/config.h"
 
 #include "tiffcomposite_int.hpp" // Do not change the order of these 2 includes,
 #include "tiffvisitor_int.hpp"   // see bug #487
@@ -44,6 +44,9 @@
 #include <iomanip>
 #include <cassert>
 #include <limits>
+
+#define TAG_SCENE_TYPE 0xa301
+#define TAG_FILE_SOURCE 0xa300
 
 // *****************************************************************************
 namespace {
@@ -1497,6 +1500,20 @@ namespace Exiv2 {
         }
         uint32_t size = typeSize * count;
         uint32_t offset = getLong(p, byteOrder());
+        if (TAG_SCENE_TYPE == object->tag())
+        {
+            tiffType = ttUnsignedLong;
+            typeId = toTypeId(tiffType, object->tag(), object->group());
+            typeSize = TypeInfo::typeSize(typeId);
+            size = (int)typeSize * count;
+        }
+        else if (TAG_FILE_SOURCE == object->tag())
+        {
+             tiffType = ttUnsignedLong;
+             typeId = toTypeId(tiffType, object->tag(), object->group());
+             typeSize = TypeInfo::typeSize(typeId);
+             size = (int)typeSize * count;
+        }
         byte* pData = p;
         if (   size > 4
             && (   baseOffset() + offset >= size_

@@ -25,7 +25,7 @@
  */
 // *****************************************************************************
 // included header files
-#include "config.h"
+#include "../include/config.h"
 
 #include "rw2image.hpp"
 #include "rw2image_int.hpp"

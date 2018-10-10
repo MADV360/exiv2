@@ -23,7 +23,7 @@
 
 // *****************************************************************************
 
-#include "config.h"
+#include "../include/config.h"
 
 #ifdef EXV_USE_CURL
 #include <curl/curl.h>

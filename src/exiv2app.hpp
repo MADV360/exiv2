@@ -29,7 +29,7 @@
 
 // *****************************************************************************
 // included header files
-#include <exiv2/exiv2.hpp>
+#include "exiv2.hpp"
 
 #include "utils.hpp"
 #include "types.hpp"

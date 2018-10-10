@@ -13,7 +13,7 @@
 #include "XMP_Const.h"
 #include "XMP_BuildInfo.h"
 
-#include "client-glue/WXMPMeta.hpp"
+#include "WXMPMeta.hpp" //#include "client-glue/WXMPMeta.hpp"
 
 #include <vector>
 #include <string>

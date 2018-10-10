@@ -14,7 +14,9 @@
 #define XML_SetExternalEntityRefHandlerArg  XML_SetExternalEntRefHandlerArg
 #endif
 
+#ifdef __cplusplus
 #include <cstdlib>
+#endif
 #include "expat_external.h"
 
 #ifdef __cplusplus
@@ -42,16 +44,16 @@ typedef unsigned char XML_Bool;
    Otherwise, the #define hackery is quite ugly and would have been
    dropped.
 */
-enum XML_Status {
+typedef enum XML_Status {
   XML_STATUS_ERROR = 0,
-#define XML_STATUS_ERROR XML_STATUS_ERROR
+//#define XML_STATUS_ERROR XML_STATUS_ERROR
   XML_STATUS_OK = 1,
-#define XML_STATUS_OK XML_STATUS_OK
+//#define XML_STATUS_OK XML_STATUS_OK
   XML_STATUS_SUSPENDED = 2
-#define XML_STATUS_SUSPENDED XML_STATUS_SUSPENDED
-};
+//#define XML_STATUS_SUSPENDED XML_STATUS_SUSPENDED
+} XML_Status;
 
-enum XML_Error {
+typedef enum XML_Error {
   XML_ERROR_NONE,
   XML_ERROR_NO_MEMORY,
   XML_ERROR_SYNTAX,
@@ -96,23 +98,23 @@ enum XML_Error {
   XML_ERROR_RESERVED_PREFIX_XML,
   XML_ERROR_RESERVED_PREFIX_XMLNS,
   XML_ERROR_RESERVED_NAMESPACE_URI
-};
+} XML_Error;
 
-enum XML_Content_Type {
+typedef enum XML_Content_Type {
   XML_CTYPE_EMPTY = 1,
   XML_CTYPE_ANY,
   XML_CTYPE_MIXED,
   XML_CTYPE_NAME,
   XML_CTYPE_CHOICE,
   XML_CTYPE_SEQ
-};
+} XML_Content_Type;
 
-enum XML_Content_Quant {
+typedef enum XML_Content_Quant {
   XML_CQUANT_NONE,
   XML_CQUANT_OPT,
   XML_CQUANT_REP,
   XML_CQUANT_PLUS
-};
+} XML_Content_Quant;
 
 /* If type == XML_CTYPE_EMPTY or XML_CTYPE_ANY, then quant will be
    XML_CQUANT_NONE, and the other fields will be zero or NULL.
@@ -832,12 +834,12 @@ XML_StopParser(XML_Parser parser, XML_Bool resumable);
 XMLPARSEAPI(enum XML_Status)
 XML_ResumeParser(XML_Parser parser);
 
-enum XML_Parsing {
+typedef enum XML_Parsing {
   XML_INITIALIZED,
   XML_PARSING,
   XML_FINISHED,
   XML_SUSPENDED
-};
+} XML_Parsing;
 
 typedef struct {
   enum XML_Parsing parsing;
@@ -873,11 +875,11 @@ XML_ExternalEntityParserCreate(XML_Parser parser,
                                const XML_Char *context,
                                const XML_Char *encoding);
 
-enum XML_ParamEntityParsing {
+typedef enum XML_ParamEntityParsing {
   XML_PARAM_ENTITY_PARSING_NEVER,
   XML_PARAM_ENTITY_PARSING_UNLESS_STANDALONE,
   XML_PARAM_ENTITY_PARSING_ALWAYS
-};
+} XML_ParamEntityParsing;
 
 /* Controls parsing of parameter entities (including the external DTD
    subset). If parsing of parameter entities is enabled, then
@@ -1006,7 +1008,7 @@ XMLPARSEAPI(XML_Expat_Version)
 XML_ExpatVersionInfo(void);
 
 /* Added in Expat 1.95.5. */
-enum XML_FeatureEnum {
+typedef enum XML_FeatureEnum {
   XML_FEATURE_END = 0,
   XML_FEATURE_UNICODE,
   XML_FEATURE_UNICODE_WCHAR_T,
@@ -1019,7 +1021,7 @@ enum XML_FeatureEnum {
   XML_FEATURE_LARGE_SIZE,
   XML_FEATURE_ATTR_INFO
   /* Additional features must be added to the end of this enum. */
-};
+} XML_FeatureEnum;
 
 typedef struct {
   enum XML_FeatureEnum  feature;

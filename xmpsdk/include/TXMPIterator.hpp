@@ -76,7 +76,7 @@
 ///   \li \c #kXMP_IterOmitQualifiers - Do not visit the qualifiers of a node.
 // =================================================================================================
 
-#include "client-glue/WXMPIterator.hpp"
+#include "WXMPIterator.hpp" //#include "client-glue/WXMPIterator.hpp"
 
 template <class tStringObj> class TXMPIterator {
 

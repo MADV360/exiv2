@@ -24,7 +24,7 @@
  */
 // *****************************************************************************
 // included header files
-#include "config.h"
+#include "../include/config.h"
 
 #include "makernote_int.hpp"
 #include "ini.hpp"

@@ -24,7 +24,7 @@
  */
 // *****************************************************************************
 // included header files
-#include "config.h"
+#include "../include/config.h"
 
 #include "tiffimage_int.hpp"
 #include "tiffcomposite_int.hpp"

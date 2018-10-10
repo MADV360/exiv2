@@ -10,7 +10,7 @@
 #include "XMPCore_Impl.hpp"
 
 #include "XMPMeta.hpp"
-#include "client-glue/WXMPMeta.hpp"
+#include "WXMPMeta.hpp" //#include "client-glue/WXMPMeta.hpp"
 
 #if XMP_WinBuild
     #ifdef _MSC_VER

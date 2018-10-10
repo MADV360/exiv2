@@ -24,7 +24,7 @@
  */
 // *****************************************************************************
 // included header files
-#include "config.h"
+#include "../include/config.h"
 
 #include "tgaimage.hpp"
 #include "image.hpp"

@@ -26,7 +26,7 @@
 #ifndef I18N_H_
 #define I18N_H_
 
-#include "config.h"
+#include "../include/config.h"
 
 /* NLS can be disabled through the configure --disable-nls option. */
 #ifdef EXV_ENABLE_NLS

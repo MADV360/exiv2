@@ -25,7 +25,7 @@ typedef enum {
     EXLEN,      /* i: waiting for extra length (gzip) */
     EXTRA,      /* i: waiting for extra bytes (gzip) */
     NAME,       /* i: waiting for end of file name (gzip) */
-    COMMENT,    /* i: waiting for end of comment (gzip) */
+    ZLIB_COMMENT,    /* i: waiting for end of comment (gzip) */
     HCRC,       /* i: waiting for header crc (gzip) */
     DICTID,     /* i: waiting for dictionary check value */
     DICT,       /* waiting for inflateSetDictionary() call */

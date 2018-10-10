@@ -22,7 +22,7 @@
  */
 // *****************************************************************************
 // included header files
-#include "config.h"
+#include "../include/config.h"
 
 #include "actions.hpp"
 #include "exiv2app.hpp"

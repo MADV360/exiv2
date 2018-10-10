@@ -28,7 +28,7 @@
 #endif
 
 // included header files
-#include "config.h"
+#include "../include/config.h"
 
 #include "datasets.hpp"
 #include "http.hpp"

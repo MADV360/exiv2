@@ -26,7 +26,7 @@
 // #define DEBUG
 
 // included header files
-#include "config.h"
+#include "../include/config.h"
 
 #include "jp2image.hpp"
 #include "tiffimage.hpp"

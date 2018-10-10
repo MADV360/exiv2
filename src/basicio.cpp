@@ -22,7 +22,7 @@
  */
 // *****************************************************************************
 // included header files
-#include "config.h"
+#include "../include/config.h"
 #include "datasets.hpp"
 #include "basicio.hpp"
 #include "futils.hpp"

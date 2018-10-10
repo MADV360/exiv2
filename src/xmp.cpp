@@ -40,11 +40,11 @@
 #ifdef   EXV_HAVE_XMP_TOOLKIT
 # define TXMP_STRING_TYPE std::string
 # ifdef  EXV_ADOBE_XMPSDK
-# include <XMP.hpp>
+# include "XMP.hpp" //#include <XMP.hpp>
 # else
-# include <XMPSDK.hpp>
+# include "XMPSDK.hpp" //#include <XMPSDK.hpp>
 # endif
-# include <XMP.incl_cpp>
+# include "XMP.incl_cpp" //# include <XMP.incl_cpp> //
 #endif // EXV_HAVE_XMP_TOOLKIT
 
 // *****************************************************************************

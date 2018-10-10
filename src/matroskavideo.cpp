@@ -25,7 +25,7 @@
  */
 // *****************************************************************************
 // included header files
-#include "config.h"
+#include "../include/config.h"
 
 #ifdef EXV_ENABLE_VIDEO
 #include "matroskavideo.hpp"

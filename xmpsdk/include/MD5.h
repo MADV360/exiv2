@@ -24,6 +24,7 @@
  */
 
 #include <sys/types.h>
+#include "../../include/exiv2/types.hpp"
 
 #ifdef _MSC_VER
 //   _MSC_VER   1600 == Visual Studio 2010

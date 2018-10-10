@@ -12,7 +12,7 @@
 #include "XMPCore_Impl.hpp"
 
 #include "XMPUtils.hpp"
-#include "client-glue/WXMPUtils.hpp"
+#include "WXMPUtils.hpp" //#include "client-glue/WXMPUtils.hpp"
 
 #if XMP_WinBuild
     #ifdef _MSC_VER

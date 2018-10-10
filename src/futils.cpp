@@ -25,7 +25,7 @@
  */
 // *****************************************************************************
 // included header files
-#include "config.h"
+#include "../include/config.h"
 
 #include "futils.hpp"
 #include "enforce.hpp"
@@ -45,6 +45,7 @@
 #include <cstring>
 #include <algorithm>
 #include <stdexcept>
+#include <cctype>
 
 #ifdef EXV_HAVE_STRERROR_R
 #ifdef _GNU_SOURCE
